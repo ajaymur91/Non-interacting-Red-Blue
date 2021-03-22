@@ -13,8 +13,7 @@ if (length(args)<2) {
 Ns <- as.integer(args[1])   # Generate Ns configurations
 Np <- as.integer(args[2])   # Np particles in Box
 Ld <- 0.35 # Connected if distance less than Ld
-
-#Ncopy <- as.integer(args[3])   # Ncopy
+Ncopy <- as.integer(args[3])   # Ncopy
 #Nc <- 0   # Counter for number of connected
 ################################################
 # Generate random Ns configurations for Np particles
@@ -68,7 +67,7 @@ FE[i] <- -log(Zint)
 }
 # Store results and error bars 
 Stats <- cbind(mean(FE),max(FE),min(FE))
-write.table(Stats,file = paste0('./FE',Np,'/Stats'),row.names = F,col.names = c("mean","max","min"))
+write.table(Stats,file = paste0('./FE',Np,'/Stats',Ncopy),row.names = F,col.names = c("mean","max","min"))
 #write.table(c(Ns,sum(C),mean(FE)),file = paste0('./FE',Np,'/out.txt'),row.names = F)#,col.names = c("N_attempt","N_success","FE"))
 ################################################
 # Save connected cluster (for graph based analysis)
